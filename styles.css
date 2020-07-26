@@ -1,0 +1,45 @@
+html, body {height: 100%;}
+
+body {margin: 0px; padding: 0px;}
+
+button.active {background-color: #77BB77;}
+
+div#app {height: 75%; padding: 10px;}
+
+div.header {padding: 2vh; background-color: #009900; color:#222222; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 150%; font-weight: bold; border: darkolivegreen solid 2px; border-radius: 5px;}
+
+div.buttons {margin-top: 5px;}
+div.buttons > button {margin-top: 5px; padding-top: 5px; padding-bottom: 5px;}
+
+div.main {margin-top: 10px; height: 90%;}
+
+div.panes {height: 100%; display: flex;}
+
+div.panes > div.first {height: 100%; width: 50%; min-width: 100px;}
+div.panes > div.second {height: 100%; width: 30%; min-width: 100px; flex-grow: 1;}
+div.panes > div.separator {width: 10px; height: 100%; cursor: col-resize; user-select: none;}
+
+div.svgeditor {position: relative; height: 100%; border: 1px solid gray; border-radius: 5px; overflow: scroll;}
+div.memo, div.memoback {position: absolute; left: 0px; top: 0px; min-width: 100%; min-height: 100%; padding: 10px; white-space: nowrap; font-family: Consolas, "courier new"; font-size: 90%;}
+div.memo {opacity: 0.3;}
+
+div.svgviewer {height: 100%; border: 1px solid gray; border-radius: 5px;}
+div.svgviewer > img.imgsvg {margin-left: 5px; margin-top: 5px; width: 95%; height: 95%;}
+div.svgviewer > div.imgerr {margin-left: 5px; margin-top: 5px; width: 95%; height: 95%;}
+div.svgviewer iframe {display: none;}
+
+span.red {color: red;}
+span.blue {color: blue}
+span.brown {color: brown;}
+
+div.dialogs {padding: 10px; margin-top: 10px; min-height: 22px; background-color: darkseagreen; border-radius: 3px;}
+
+span.imsg1 {min-width: 300px; display: inline-block;}
+span.imsg2 {margin-left: 15px;}
+
+div.savefile > input[number] {width: 60px;}
+
+.fade-enter-active, .fade-leave-active {transition: all .3s}
+.fade-enter, .fade-leave-to {transform: translateY(-10px); opacity: 0;}
+
+

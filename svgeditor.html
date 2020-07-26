@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <div class="header"><span class="brown">SVG</span> Editor</div>
+        <div class="buttons">
+            <button v-on:click="newFile">New</button>
+            <button v-bind:class="{active: activeDlg==='load'}" v-on:click="activeDlg='load'">Load</button>
+            <button v-bind:class="{active: activeDlg==='save'}" v-on:click="activeDlg='save'">Save</button>
+            <button v-bind:class="{active: activeDlg==='params'}" v-on:click="activeDlg='params'">Params</button>
+            <button v-bind:class="{active: activeDlg==='format'}" v-on:click="activeDlg='format'">Format</button>
+            <button v-on:click="run">Run</button>
+        </div>
+        <div class="dialogs">
+            <transition name="fade" mode="out-in">
+                <load-file v-if="activeDlg==='load'" v-on:load="loadFile"></load-file>
+                <save-file v-else-if="activeDlg==='save'" v-bind:name="fName" v-bind:minify="minify" v-on:save="saveFile"></save-file>
+                <set-params v-else-if="activeDlg==='params'" v-bind:width="width" v-bind:height="height" v-on:set-params="setParams"></set-params>
+                <format-code v-else-if="activeDlg==='format'" v-bind:compact="compact" v-on:format="formatCode"></format-code>
+                <div v-else>
+                    <span class="imsg1">{{ infoMsg }}</span>
+                    <span class="imsg2">Col: {{ col }}, Row: {{ row }}</span>
+                </div>
+            </transition>
+        </div>
+        <div class="main">
+            <panes-layout>
+                <template v-slot:first>
+                    <svg-editor v-bind:code="code" v-on:change-code="changeCode" v-on:caret-pos="caretPos"></svg-editor>
+                </template>
+                <template v-slot:second>
+                    <svg-viewer v-bind:code="svgCode"></svg-viewer>
+                </template>
+            </panes-layout>
+        </div>
+    </div>    
+
+    <script src="app.js"></script>
+</body>
+</html>
