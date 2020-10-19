@@ -289,7 +289,7 @@ Vue.component('svg-viewer', {
     },
     template: `
         <div class="svgviewer">
-            <img class="imgsvg" v-show="code&&!errorMsg" src="" ref="svg" v-on:error="error">
+            <img class="imgsvg" v-show="code&&!errorMsg" src="" ref="svg" @error="error">
             <div class="imgerr" v-show="errorMsg">
                 Error. Check Your code! More info:
                 <br><br>
@@ -447,7 +447,7 @@ Vue.component('load-file', {
     template: `
         <div>
             <input type="file" ref="fileselect" accept=".svg">            
-            <button v-on:click="$emit('load',null)"> X </button>
+            <button @click="$emit('load',null)"> X </button>
         </div>
     `
 });
@@ -483,8 +483,8 @@ Vue.component('save-file', {
     <div class="savefile">
         File Name: <input type="text" v-model="dName" @input=validate> &nbsp;
         <input type="checkbox" v-model="dMinify">Minify &nbsp;
-        <button v-bind:disabled="!valid" v-on:click="submit"> V </button>
-        <button v-on:click="$emit('save',null)"> X </button>
+        <button :disabled="!valid" @click="submit"> V </button>
+        <button @click="$emit('save',null)"> X </button>
     </div>
     `
 });
@@ -511,8 +511,8 @@ Vue.component('format-code', {
     template: `
     <div class="formatcode">
         <input type="checkbox" v-model="dCompact">Compact Mode &nbsp;
-        <button v-on:click="submit"> V </button>
-        <button v-on:click="$emit('format',null)"> X </button>
+        <button @click="submit"> V </button>
+        <button @click="$emit('format',null)"> X </button>
     </div>
     `
 });
@@ -548,8 +548,8 @@ Vue.component('set-params', {
     <div class="setparams">
         Width: <input type="number" min="1" max="9999" v-model="dWidth" @input=validate> &nbsp;
         Height: <input type="number" min="1" max="9999" v-model="dHeight" @input=validate> &nbsp;
-        <button v-bind:disabled="!valid" v-on:click="submit"> V </button>
-        <button v-on:click="$emit('set-params',null)"> X </button>
+        <button :disabled="!valid" @click="submit"> V </button>
+        <button @click="$emit('set-params',null)"> X </button>
     </div>
     `
 });
